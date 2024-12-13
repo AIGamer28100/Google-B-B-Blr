@@ -11,13 +11,21 @@ To address these limitations and revolutionize project management workflows, I d
 At the heart of this project lies the goal of streamlining the often cumbersome process of transforming unstructured conversations into actionable project tasks. To achieve this, a multifaceted approach was adopted. A custom-built Chrome extension acts as the front-line, diligently scraping the conversations from chat applications. These raw conversations are then seamlessly transmitted to a robust Flask REST API.
 Within this API, the Google Custom built Gemini API takes center stage, employing its advanced natural language processing capabilities to intelligently analyze the conversational data and extract key task attributes, such as descriptions, deadlines, and assigned individuals.
 Finally, the extracted tasks are securely stored and managed within the Firebase cloud database, facilitating easy retrieval and seamless integration with existing project management tools via API.
-Application Workflow
 
-Real-time Chat Monitoring: The Chrome extension actively monitors chat applications for incoming messages and relevant conversations. Upon detection, the extension seamlessly transmits the raw conversation data to the Flask REST API for further processing.
-Gemini-Powered Task Extraction: The Flask REST API leverages a custom-built Gemini agent to intelligently analyze the incoming conversational data and extract crucial task attributes such as title, detailed descriptions, assigned individuals, and estimated deadlines.
-User Confirmation & Model Enhancement: The extracted tasks are then presented to the user for review and confirmation as a toast or alert. This crucial step ensures the accuracy of task identification and allows for manual adjustments as needed. Furthermore, the user's confirmation history is utilized to refine the Gemini agent's task extraction capabilities, enabling the system to learn and personalize task suggestions over time, reducing the likelihood of irrelevant or unnecessary task creation.
-Secure Data Storage: Once confirmed, the validated tasks are securely stored within the Firebase cloud database, ensuring data persistence and easy accessibility.
-Seamless Integration: The Flask REST API provides a dedicated endpoint for retrieving stored tasks. This facilitates seamless integration with a wide array of popular project management tools, including Jira, Notion, and Trello. This integration enables users to seamlessly manage their projects within their preferred platform without disrupting their existing workflows.
+## Application Workflow
+
+![Screenshot from 2024-12-13 15-28-08](https://github.com/user-attachments/assets/dd379169-b4d1-4d90-8bb8-af9eaa10b712)
+
+
+- Real-time Chat Monitoring: The Chrome extension actively monitors chat applications for incoming messages and relevant conversations. Upon detection, the extension seamlessly transmits the raw conversation data to the Flask REST API for further processing.
+
+- Gemini-Powered Task Extraction: The Flask REST API leverages a custom-built Gemini agent to intelligently analyze the incoming conversational data and extract crucial task attributes such as title, detailed descriptions, assigned individuals, and estimated deadlines.
+
+- User Confirmation & Model Enhancement: The extracted tasks are then presented to the user for review and confirmation as a toast or alert. This crucial step ensures the accuracy of task identification and allows for manual adjustments as needed. Furthermore, the user's confirmation history is utilized to refine the Gemini agent's task extraction capabilities, enabling the system to learn and personalize task suggestions over time, reducing the likelihood of irrelevant or unnecessary task creation.
+
+- Secure Data Storage: Once confirmed, the validated tasks are securely stored within the Firebase cloud database, ensuring data persistence and easy accessibility.
+
+- Seamless Integration: The Flask REST API provides a dedicated endpoint for retrieving stored tasks. This facilitates seamless integration with a wide array of popular project management tools, including Jira, Notion, and Trello. This integration enables users to seamlessly manage their projects within their preferred platform without disrupting their existing workflows.
 
 > Note: This application also promotes cross-platform compatibility. For instance, if team members utilize different project management tools, it can be challenging to maintain a unified view of project progress. However, by leveraging the API-driven approach, tasks can be seamlessly added to all configured platforms, ensuring that every team member has access to the latest updates, regardless of their preferred tool. This fosters better collaboration and eliminates the confusion that can arise when using multiple, disparate systems.
 
