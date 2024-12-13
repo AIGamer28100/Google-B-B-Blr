@@ -1,8 +1,8 @@
-Folder stucture
+# Chrome Extension
 
-/my-discord-extension
-|-- manifest.json
-|-- background.js
-|-- content.js
-|-- popup.html
-|-- popup.js
+## Usage
+
+- Go to chomre://extensions
+- click on load unpacked and select this folder
+
+Extension should be running now.
