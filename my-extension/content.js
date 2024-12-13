@@ -50,6 +50,7 @@ async function read_data() {
         messages = document.querySelectorAll('[aria-roledescription="Message"]')
 
         // Extract message text from each message
+        
         messageTexts = Array.from(messages).map((message) => {
             username = null;
             timestamp = null;
@@ -117,7 +118,7 @@ async function read_data() {
 }
 
 
-function displayToast(message) {
+async function displayToast(message) {
     // ... (Your toast component logic here)
     console.log(message)
     if (message['is_task']) {
@@ -125,8 +126,27 @@ function displayToast(message) {
         add_task = confirm(
             `Task Detected: ${task['task_title']}\n\nDescription: ${task['description']}\n\nAssignee: ${task['assignee']}\n\nStart Date: ${task['start_time']}\n\nEnd Date: ${task['end_time']}\n\nDo you want to add this task?`
         )
+        console.log(add_task)
+        if (add_task) {
+            console.log("Adding task")
+            const task_status = await fetch('http://127.0.0.1:8080/add_task', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(task)
+                }
+            )
+            
+            const task_response = await task_status;
 
-        if 
+            if (task_response.status === 200) {
+                alert("Task added successfully")
+            }
+            else {
+                alert("Task could not be added, please try again later")
+            }
+        }
     }
 }
 
