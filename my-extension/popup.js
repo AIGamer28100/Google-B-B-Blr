@@ -1,17 +1,14 @@
-// Get the message list element
-const messageList = document.getElementById("messageList");
+// add a floating button in the bottom when clicked should run the `read_data` in content.js
+const button = document.createElement('button');
+button.textContent = 'Read Data';
+button.style.position = 'fixed';
+button.style.bottom = '10px';
+button.style.right = '10px';
+button.style.zIndex = '1000';
+document.body.appendChild(button);
 
-// Listen for messages sent from content.js
-chrome.runtime.onMessage.addListener((message) => {
-  if (message.type === 'DISCORD_MESSAGES') {
-    const messages = message.messages;
-    messageList.innerHTML = ""; // Clear the list first
-
-    // Display each message in the list
-    messages.forEach((msg) => {
-      const li = document.createElement("li");
-      li.textContent = msg;
-      messageList.appendChild(li);
-    });
-  }
+button.addEventListener('click', () => {
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.tabs.sendMessage(tabs[0].id, { action: 'read_data' });
+  });
 });

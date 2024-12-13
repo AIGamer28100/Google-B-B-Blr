@@ -1,0 +1,7 @@
+name: google
+
+channels:
+  - default
+
+dependencies:
+  - python=3.11

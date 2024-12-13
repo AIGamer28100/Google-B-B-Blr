@@ -1,0 +1,7 @@
+Flask
+gunicorn
+Flask-CORS
+google-generativeai
+google.ai.generativelanguage
+google-cloud-firestore
+firebase-admin
